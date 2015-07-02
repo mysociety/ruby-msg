@@ -24,5 +24,18 @@ class TestMsg < Test::Unit::TestCase
 			assert_equal 'Yippee666', msg.props['Name4', Ole::Types::Clsid.parse('66666666-6666-6666-c000-000000000046')]
 		end
 	end
+
+
+	def test_rtf_to_html_returns_valid_utf8
+		msg = Mapi::Msg.open "#{TEST_DIR}/multipart-with-html.msg" do |msg|
+			assert_equal 1, msg.recipients.length
+			assert_equal 3, msg.attachments.length
+			html_part = msg.to_mime.parts[0].parts[1].to_s
+			if html_part.respond_to?(:encoding)
+				assert_equal 'UTF-8', html_part.encoding.to_s
+				assert html_part.valid_encoding?
+			end
+		end
+	end
 end
 

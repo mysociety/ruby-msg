@@ -92,7 +92,7 @@ module Mapi
 					code.downcase.to_sym
 				end
 			end
-			
+
 			def to_s
 				to_sym.to_s
 			end
@@ -144,7 +144,7 @@ module Mapi
 		end
 
 		attr_reader :raw
-	
+
 		# +raw+ should be an hash-like object that maps <tt>Key</tt>s to values. Should respond_to?
 		# [], keys, values, each, and optionally []=, and delete.
 		def initialize raw
@@ -174,7 +174,7 @@ module Mapi
 			raw.keys.each do |key|
 				sym = key.to_sym
 				unless Symbol === sym
-					Log.debug "couldn't find symbolic name for key #{key.inspect}" 
+					Log.debug "couldn't find symbolic name for key #{key.inspect}"
 					next
 				end
 				if @sym_to_key[sym]
@@ -192,7 +192,7 @@ module Mapi
 		def keys
 			sym_to_key.keys
 		end
-		
+
 		def values
 			sym_to_key.values.map { |key| raw[key] }
 		end
@@ -231,9 +231,9 @@ module Mapi
 		end
 
 		# -----
-		
+
 		# temporary pseudo tags
-		
+
 		# for providing rtf to plain text conversion. later, html to text too.
 		def body
 			return @body if defined?(@body)
@@ -281,6 +281,10 @@ module Mapi
 						Log.warn 'unable to convert rtf to html'
 					end
 				end
+			end
+			if @body_html && @body_html.respond_to?(:encoding)
+				@body_html.force_encoding("utf-8")
+				@body_html = @body_html.valid_encoding? ? @body_html : @body_html.encode("utf-16le", :invalid => :replace, :replace => "").encode("utf-8")
 			end
 			@body_html
 		end
