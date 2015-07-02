@@ -9,6 +9,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rake
+  rake (>= 0.9.2.2)
   ruby-ole (>= 1.2.8)
   vpim (>= 0.360)
