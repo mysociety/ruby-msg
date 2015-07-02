@@ -36,7 +36,7 @@ module Mapi
 			# headers, i think because one recipient was external. the only place the senders email address
 			# exists is in the transport headers. so its maybe not good to overwrite from.
 			# recipients however usually have smtp address available.
-			# maybe we'll do it for all addresses that are smtp? (is that equivalent to 
+			# maybe we'll do it for all addresses that are smtp? (is that equivalent to
 			# sender_email_address !~ /^\//
 			name, email = props.sender_name, props.sender_email_address
 			if props.sender_addrtype == 'SMTP'
@@ -236,7 +236,7 @@ module Mapi
 			# hmmm, have to use read here. that assumes that the data isa stream.
 			# but if the attachment data is a string, then it won't work. possible?
 			data_str = if @embedded_msg
-				mime.headers['Content-Type'] = 'message/rfc822'
+				mime.headers['Content-Type'] = ['message/rfc822']
 				# lets try making it not base64 for now
 				mime.headers.delete 'Content-Transfer-Encoding'
 				# not filename. rather name, or something else right?

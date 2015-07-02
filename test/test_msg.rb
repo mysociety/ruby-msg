@@ -37,5 +37,11 @@ class TestMsg < Test::Unit::TestCase
 			end
 		end
 	end
+
+	def test_embedded_msg_renders_as_string
+		msg = Mapi::Msg.open "#{TEST_DIR}/embedded.msg" do |msg|
+			assert_match "message/rfc822", msg.to_mime.to_s
+		end
+	end
 end
 
