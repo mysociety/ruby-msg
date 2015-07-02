@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'yaml'
 require 'mapi/types'
 require 'mapi/rtf'

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # we have two different "backends" for note conversion. we're sticking with
 # the current (home grown) mime one until the tmail version is suitably
 # polished.

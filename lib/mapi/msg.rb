@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'ole/storage'
 require 'mapi'
 require 'mapi/rtf'

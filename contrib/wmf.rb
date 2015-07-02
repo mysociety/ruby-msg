@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 
 # this file will be used later to enhance the msg conversion.
 

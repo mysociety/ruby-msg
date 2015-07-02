@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Mapi
 	#
 	# Mapi::Item is the base class used for all mapi objects, and is purely a

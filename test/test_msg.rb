@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #! /usr/bin/ruby
 
 TEST_DIR = File.dirname __FILE__
