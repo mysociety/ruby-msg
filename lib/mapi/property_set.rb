@@ -282,11 +282,6 @@ module Mapi
 					end
 				end
 			end
-			if @body_html && @body_html.respond_to?(:encoding)
-				@body_html.force_encoding("utf-8")
-				@body_html = @body_html.valid_encoding? ? @body_html : @body_html.encode("utf-16le", :invalid => :replace, :replace => "").encode("utf-8")
-			end
-			@body_html
 		end
 	end
 end
