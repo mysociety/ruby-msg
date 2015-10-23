@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# -*- encoding : ASCII-8BIT -*-
 #! /usr/bin/ruby -w
 
 $: << File.dirname(__FILE__) + '/../lib'

@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# -*- encoding : ASCII-8BIT -*-
 require 'mapi/version'
 require 'mapi/base'
 require 'mapi/types'
