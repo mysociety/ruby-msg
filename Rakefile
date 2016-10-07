@@ -4,7 +4,8 @@ require 'rake/testtask'
 require 'rbconfig'
 require 'fileutils'
 
-spec = eval File.read('ruby-msg.gemspec')
+gemspec_file = File.expand_path(File.dirname(__FILE__) + '/ruby-msg.gemspec')
+spec = eval File.read(gemspec_file)
 
 task :default => [:test]
 
