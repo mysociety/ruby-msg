@@ -126,7 +126,7 @@ module Mapi
   		@headers.each do |key, vals|
   			vals.each { |val| str << "#{key}: #{val}\r\n" }
   		end
-  		str << "\r\n" + @body
+  		str.force_encoding(@body.encoding) << "\r\n" + @body
   	end
 
   	def self.split_header header
