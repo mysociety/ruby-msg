@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# -*- encoding : ASCII-8BIT -*-
 require 'base64'
 require 'mapi/mime'
 require 'time'

@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# -*- encoding : ASCII-8BIT -*-
 
 # this file will be used later to enhance the msg conversion.
 
@@ -52,7 +52,7 @@ eg from rtf.
 \b\f2\fs20{\object\objemb{\*\objclass PBrush}\objw1320\objh1274{\*\objdata
 01050000 <- looks like standard header
 02000000 <- not sure
-07000000 <- this means length of following is 7. 
+07000000 <- this means length of following is 7.
 50427275736800 <- Pbrush\000 in hex
 00000000 <- ?
 00000000 <- ?

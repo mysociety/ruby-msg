@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# -*- encoding : ASCII-8BIT -*-
 #
 # = Introduction
 #
@@ -106,8 +106,17 @@ module Mapi
   		opts = {:boundary_counter => 0}.merge opts
   		if multipart?
   			boundary = Mime.make_boundary opts[:boundary_counter] += 1, self
-  			@body = [preamble, parts.map { |part| "\r\n" + part.to_s(opts) + "\r\n" }, "--\r\n" + epilogue].
-  				flatten.join("\r\n--" + boundary)
+        begin
+          @body = [preamble, parts.map { |part| "\r\n" + part.to_s(opts) + "\r\n" }, "--\r\n" + epilogue].
+            flatten.join("\r\n--" + boundary)
+        rescue Encoding::CompatibilityError => e
+          if ''.respond_to?(:force_encoding)
+            @body = [preamble, parts.map { |part| "\r\n" + part.to_s(opts).force_encoding('ASCII-8BIT') + "\r\n" }, "--\r\n" + epilogue].
+              flatten.join("\r\n--" + boundary)
+          else
+            raise e
+          end
+        end
   			content_type, attrs = Mime.split_header @headers['Content-Type'][0]
   			attrs['boundary'] = boundary
   			@headers['Content-Type'] = [([content_type] + attrs.map { |key, val| %{#{key}="#{val}"} }).join('; ')]

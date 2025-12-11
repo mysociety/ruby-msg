@@ -21,14 +21,6 @@ Gem::Specification.new do |s|
 	s.files += Dir.glob('test/test_*.rb')
 	s.files += Dir.glob('bin/*')
 
-	s.has_rdoc = true
-	s.extra_rdoc_files = ['README', 'ChangeLog']
-	s.rdoc_options += [
-		'--main', 'README',
-		'--title', "#{PKG_NAME} documentation",
-		'--tab-width', '2'
-	]
-
 	s.add_dependency 'ruby-ole', '>=1.2.8'
 	s.add_dependency 'vpim', '>=0.360'
 end
