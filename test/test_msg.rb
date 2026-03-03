@@ -35,6 +35,15 @@ class TestMsg < Test::Unit::TestCase
     end
   end
 
+  def test_multipart_rendered_string_is_valid_encoding
+    msg = Mapi::Msg.open "#{TEST_DIR}/small-business-rates-relief.msg" do |msg|
+      string_version = msg.to_mime.to_s
+      if string_version.respond_to?(:valid_encoding?)
+        assert_equal true, string_version.valid_encoding?
+      end
+    end
+  end
+
   def test_embedded_msg_renders_as_string
     msg = Mapi::Msg.open "#{TEST_DIR}/embedded.msg" do |msg|
       assert_match "message/rfc822", msg.to_mime.to_s
